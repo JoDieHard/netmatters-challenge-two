@@ -1,0 +1,65 @@
+* {
+    font-family: 'Yomogi', sans-serif;
+}
+
+
+body {
+    margin: 0px;
+}
+
+header {
+    
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+
+    padding: 20px;
+    margin: 0px auto;
+    color: white;
+    text-align: center;
+
+}
+
+h1 {
+    text-transform: uppercase;    
+}
+.randomImg {
+    overflow: hidden;
+    height: 300px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    border-radius: 50%;
+}
+img {
+    width: 100%;
+    height: auto;
+    background-image: cover;
+}
+
+.inputContainer {
+    margin: 0px auto;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 50px;
+    border-bottom: solid 1px grey;
+}
+
+#email-input {
+    width: 100%;
+    height: 30px;
+    padding-left: 10px;
+}
+
+#submit {
+    width: 150px;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+label {
+    text-align: center;
+}
