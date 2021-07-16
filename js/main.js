@@ -24,7 +24,7 @@ let duplicateItem;
 
     // Uses the Random Number function to generate a random image
     function getImage () {
-        $('.randomImg img').attr('src', 'https://picsum.photos/id/' + getRandom(400) + '/300');
+        $('.randomImg img').attr('src', 'https://picsum.photos/id/' + getRandom(1000) + '/1200');
     }
 
     // Validates the Text Input's Email
@@ -48,25 +48,32 @@ let duplicateItem;
         } else if ( hasError == false ) { return true; };
     };
 
-    // Checks the Email Doesn't Exist 
-    function logCheck () {
-        return emailList.includes( email.val() );
 
+        // Checks the Email Doesn't Exist 
+        function logCheck () {
+            return emailList.includes( email.val() );
         };
 
 
         // Create a logItem function 
-
         function createItem () {
             logContainer.append('<div class="logItem">' + '<img class="thumb" src="' + $('.randomImg img').attr('src') + '">' + '<p class="email">' + $('#email-input').val() + '</p>' + '</div>');
             emailList.push( email.val() );
             // console.log(emailList);
         };
 
+
         // Add an Image to an existing logItem function
         function addImg () {
             $('.randomImg img').clone().addClass('thumb').prependTo( $('.logItem')[ duplicateItem ] );
         };
+
+
+        // If there is an error loading an image, load another one! 
+        $('.randomImg img').on('error', function() {
+            console.log('ERROR: Loading the image failed, Trying again...');
+            getImage();
+        });
 
 // ———   ———   ———   ———   ———   ———   ———   ———   ———   ———   ———   ———   ———   ———   ———   ———   ———   ———
 
@@ -79,7 +86,9 @@ let duplicateItem;
 
 
     // Submit an email to the image 
-    $( '#submit' ).on('click', function() {
+    $( '#submit' ).on('click', function(event) {
+        event.preventDefault();
+
         if ( isValid() == false )  {
             console.log('Something went wrong! Please check your email is correct.');
         } else if ( isValid() == true ) {
@@ -87,8 +96,10 @@ let duplicateItem;
             // IF the Email exists, add the image to it
             if ( logCheck() == true ) {
                 duplicateItem =  emailList.indexOf( email.val() );
-                addImg();  // Adds the image to the existing Email 
+
                 console.log('This Email already exists.');
+                addImg();  // Adds the image to the existing Email 
+                getImage(); // Gets a new image 
 
 
             } else if ( logCheck() == false ) {  // ELSE IF the Email DOES NOT already Exist
@@ -98,49 +109,13 @@ let duplicateItem;
 
                 createItem(); // Creates a new Log Item
                 getImage(); // Gets a new image 
-                
             }
         }
     });
     //———————————————————————————————————————
 
-
-
-
-
-
-
-
-// OLD CODE
-
-
-// $( window ).on('load', function () {
-//     getImage();
-// });
-
-// $('#submit').on('click', function () {
-
-//     //Check the email doesn't already exist 
-//     if ( $('.itemOutput .email').html() == $('#email-input').val() ) {
-
-//         console.log('Email already exists');
-//         console.log( $(this).attr('src') );
-
-//         // Prepend the image to the existing email
-//         $('.itemOutput').prepend('<img class="thumb" src="' + $('.randomImg img').attr('src') + '" >' );
-    
-//         // Reset Image
-//         getImage();
-        
-//     } else {
-
-//         console.log( $(this).attr('src') );
-
-//         // Add the image and email to the log 
-//         $('#logContainer').append('<div class="itemOutput">' + '<img class="thumb" src="' +  + '">' + '<p class="email">' + $('#email-input').val() + '</p>' + '</div>');
-//         console.log('This is a new email');
-
-//         // Reset Image
-//         getImage();
-//     }
-// });
+    // Open image if clicked 
+    $('img').on('click', function(e) {
+        console.log( 'This is the source: ' + (e.target.attr('src')) );
+        // $('.modal img').attr('src', e.target.attr('src'));
+    });
