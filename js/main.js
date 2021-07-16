@@ -3,6 +3,7 @@ const submitBtn = $( '#submit' );
 const email = $('#email-input');
 const logContainer = $('#logContainer');
 const logItem = $('.logItem');
+const thumb = $( '#logContainer .logItem .thumb' );
 
 const inputValue = $('#email-input').val();
 let currentImg = $('.randomImg img').attr('src');
@@ -18,7 +19,7 @@ let duplicateItem;
         let result;
         
         result = (Math.random() * max).toFixed(0);
-        console.log(result);
+        // console.log(result);
         return result;
     };
 
@@ -90,14 +91,14 @@ let duplicateItem;
         event.preventDefault();
 
         if ( isValid() == false )  {
-            console.log('Something went wrong! Please check your email is correct.');
+            alert('Something went wrong! Please check your email is correct.');
         } else if ( isValid() == true ) {
 
             // IF the Email exists, add the image to it
             if ( logCheck() == true ) {
                 duplicateItem =  emailList.indexOf( email.val() );
 
-                console.log('This Email already exists.');
+                // console.log('This Email already exists.');
                 addImg();  // Adds the image to the existing Email 
                 getImage(); // Gets a new image 
 
@@ -105,7 +106,7 @@ let duplicateItem;
             } else if ( logCheck() == false ) {  // ELSE IF the Email DOES NOT already Exist
                 // Adds the image and email to the logs below. 
                 // console.log('This is a new Email.');
-                console.log('Success! Image has been added below.');
+                // console.log('Success! Image has been added below.');
 
                 createItem(); // Creates a new Log Item
                 getImage(); // Gets a new image 
@@ -115,7 +116,28 @@ let duplicateItem;
     //———————————————————————————————————————
 
     // Open image if clicked 
-    $('img').on('click', function(e) {
-        console.log( 'This is the source: ' + (e.target.attr('src')) );
-        // $('.modal img').attr('src', e.target.attr('src'));
+    $('#logContainer' ).on('click', function(e) {
+        // console.log( e.target );
+        if ( $( e.target ).attr('class') == 'thumb' ) {
+            // console.log('clone image!')
+            // $( '#modal' ).remove('img');
+            $( e.target ).clone().removeClass('thumb').addClass('modalImg').prependTo( $(' #modal ') );
+            $('#modal').css('display', 'flex');
+            $( 'body' ).css('overflow', 'hidden');
+            
+            setTimeout(function(){ 
+                $( '#modal' ).css( 'opacity', '1' );
+            }, 500);
+        }
+    });
+
+    //Close Modal 
+    $('#modal').on('click', function() {
+        $( this ).css( 'opacity', '0' );
+        $( 'body' ).css('overflow', 'auto');
+
+        setTimeout(function(){ 
+            $( '#modal' ).css( 'display', 'none' );
+            $( '#modal img' ).remove();
+        }, 500);
     });
