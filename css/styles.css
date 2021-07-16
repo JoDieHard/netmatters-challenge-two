@@ -301,9 +301,9 @@ footer p:last-child {
     color: rgba(255, 255, 255, 0.8);
     padding: 10px;
     font-size: 1.4rem;
-    margin-top: 43.5%;
+    /* margin-top: 43.5%; */
     background: rgba(0, 0, 0, 0.5);
-    /* bottom: 138px; */
+    bottom: 138px;
 }
 
  /* #modal::after:hover {
