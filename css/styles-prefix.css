@@ -48,9 +48,9 @@ header p {
 }
 
 #generate:hover {
-    -webkit-transform: scale(1.1) translateX(15px);
-        -ms-transform: scale(1.1) translateX(15px);
-            transform: scale(1.1) translateX(15px);
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
     background-color: #c0c0c0;
 }
 
@@ -365,7 +365,9 @@ footer p:last-child {
 }
 
 #modal img {
-    width: 60%;
+    /* width: 60%; */
+    /* max-width: 851px; */
+    width: 700px;
     height: auto;
     position: relative;
 }
@@ -374,8 +376,7 @@ footer p:last-child {
     content: "Click to Close";
 
     position: absolute;
-    width: 58.55%;
-    /* height: 87.2%; */
+    width: 680px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -397,8 +398,9 @@ footer p:last-child {
     color: rgba(255, 255, 255, 0.8);
     padding: 10px;
     font-size: 1.4rem;
-    margin-top: 56.6%;
+    margin-top: 43.5%;
     background: rgba(0, 0, 0, 0.5);
+    /* bottom: 138px; */
 }
 
  /* #modal::after:hover {
@@ -409,3 +411,12 @@ footer p:last-child {
     text-align: center;
     color: white;
 }  */
+
+
+/* RESPONSIVENESS  */
+
+/* @media screen and ( min-width: 1421px ) {
+    .modalImg {
+        bottom: 0px;
+    }; 
+} */
