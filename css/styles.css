@@ -45,7 +45,7 @@ header p {
 }
 
 #generate:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) translateX(15px);
     background-color: #c0c0c0;
 }
 
