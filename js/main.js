@@ -115,6 +115,13 @@ let duplicateItem;
     });
     //———————————————————————————————————————
 
+    // Generate a new Image Button 
+    $( '#generate' ).on('click', function () {
+        getImage();
+    })
+
+    //———————————————————————————————————————
+
     // Open image if clicked 
     $('#logContainer' ).on('click', function(e) {
         // console.log( e.target );
@@ -141,3 +148,4 @@ let duplicateItem;
             $( '#modal img' ).remove();
         }, 500);
     });
+    //———————————————————————————————————————

@@ -38,6 +38,17 @@ header p {
     width: 600px;
 }
 
+/* Generate New Image Button */
+#generate {
+    width: 300px !important;
+    background-color: lightgrey !important;
+}
+
+#generate:hover {
+    transform: scale(1.1);
+    background-color: #c0c0c0;
+}
+
 /* Random Image Container  */
 .randomImg {
     overflow: hidden;
@@ -110,7 +121,7 @@ header p {
     border: solid 2px #ec003b;
 }
 
-#submit {
+#submit, #generate {
     width: 150px;
     padding: 5px;
     text-transform: uppercase;
